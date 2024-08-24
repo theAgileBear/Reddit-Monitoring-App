@@ -25,8 +25,9 @@ The Reddit Monitoring App is a .NET-based console application designed to monito
    - User Agent
    - Access Token (Optional)
 2. Update program.cs to change
-  - Subreddit (default r/funny...r/ not required in string)
-  - Request Limit
+   - Subreddit (default r/funny)
+     > r/ not required in string
+   - Request Limit
 3. Run application
 4. Application will open up default browser requiring user to authorize this application to use your reddit account (Press OK in browser)
 5. Application will show output on Console
