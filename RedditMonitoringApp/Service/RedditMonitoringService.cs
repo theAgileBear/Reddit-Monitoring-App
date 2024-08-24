@@ -17,13 +17,11 @@ namespace RedditMonitoringApp
         private readonly IApiClient _apiClient;
         private StatisticsService _statsService = new StatisticsService();
 
-
         /// <summary>
         /// Initializes a new instance of the <see cref="RedditMonitoringService"/> class.
         /// Takes an IApiClient implementation as a dependency to handle API requests.
         /// </summary>
         /// <param name="apiClient">The client used to interact with the Reddit API.</param>
-
         public RedditMonitoringService(IApiClient apiClient)
         {
             _apiClient = apiClient;
