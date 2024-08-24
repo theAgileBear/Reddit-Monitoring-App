@@ -225,7 +225,6 @@ namespace RedditMonitoringApp
             {
                 Console.WriteLine("An error occurred while extracting the access token: " + ex.Message);
             }
-
             return null;
         }
     }

@@ -15,9 +15,7 @@ class Program
         RedditMonitoringService app = new RedditMonitoringService(apiClient);
 
         await app.RunMonitoringLoopAsync(SUBREDDIT);
-
-       
-
+        Console.WriteLine("Completed reddit monitoring task, ending application!");
     }
 
 
