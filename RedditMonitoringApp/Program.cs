@@ -6,35 +6,19 @@ using JObject = Newtonsoft.Json.Linq.JObject;
 
 class Program
 {
-    private const int DELAY_IN_MILLISECONDS = 10000;
     private const string SUBREDDIT = "funny";
+    private const int REQUEST_LIMIT = 1000000;
 
     static async Task Main(string[] args)
     {
+        ApiClient apiClient = new ApiClient(REQUEST_LIMIT);
+        RedditMonitoringService app = new RedditMonitoringService(apiClient);
 
-        var client = new ApiClient();
-        var statsService = new StatisticsService();
+        await app.RunMonitoringLoopAsync(SUBREDDIT);
 
-        try
-        {
-            while (true)
-            {
-                var posts = await client.GetPosts(SUBREDDIT);
-                var postsList = posts["data"]["children"].ToObject<List<JObject>>();
+       
 
-                statsService.UpdateStatistics(postsList);
-
-                statsService.ConsoleWriteTopPosts();
-                statsService.WriteMostActiveUsers();
-
-                // Wait before the next poll
-                await Task.Delay(DELAY_IN_MILLISECONDS);
-            }
-        } catch (Exception e)
-        {
-            Console.WriteLine($"Exception found: {e}");
-        }
     }
-   
+
 
 }
