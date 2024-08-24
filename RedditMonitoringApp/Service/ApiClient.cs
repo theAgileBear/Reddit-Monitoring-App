@@ -9,10 +9,10 @@ namespace RedditMonitoringApp
 {
     class ApiClient : IApiClient
     {
-        private const string CLIENT_ID = "m9GwE9xSSjcSCcByzRm7TQ";
-        private const string REDIRECT_URI = "http://localhost:5000/callback";
+        private readonly string _clientId;
+        private readonly string _redirectUri;
         private const string SCOPE_STRING = "read";
-        private const string USER_AGENT = "Monitoring-App By ScheduleSalt6538";
+        private readonly string _userAgent;
         private static readonly string UniqueString = GenerateSimpleState();
 
         //default request limit to 100
@@ -28,10 +28,17 @@ namespace RedditMonitoringApp
         /// This constructor is useful for dependency injection.
         /// </summary>
         /// <param name="client">An instance of `HttpClient` used for making API requests.</param>
-        public ApiClient(HttpClient client)
+        public ApiClient(HttpClient client, ConfigLoader config)
         {
+            _clientId = config.GetConfigValue("ClientId");
+            _redirectUri = config.GetConfigValue("RedirectUri");
+            _userAgent = config.GetConfigValue("UserAgent");
+            _accessToken = string.IsNullOrEmpty(config.GetConfigValue("AccessToken")) ? null : config.GetConfigValue("AccessToken");
+
+            ValidateConfigValues();
             _accessToken = GetAccessToken();
             _client = client;
+
 
         }
 
@@ -41,15 +48,33 @@ namespace RedditMonitoringApp
         /// for making requests to the Reddit API.
         /// </summary>
         /// <param name="requestLimit">The maximum number of posts to retrieve per request.</param>
-        public ApiClient(int requestLimit)
+        public ApiClient(int requestLimit, ConfigLoader config)
         {
             _requestLimit = requestLimit;
+            _clientId = config.GetConfigValue("ClientId");
+            _redirectUri = config.GetConfigValue("RedirectUri");
+            _userAgent = config.GetConfigValue("UserAgent");
+            _accessToken = string.IsNullOrEmpty(config.GetConfigValue("AccessToken")) ? null : config.GetConfigValue("AccessToken");
+
+            ValidateConfigValues();
+
+
+
             _accessToken = GetAccessToken();
-
             _client = new HttpClient();
-            _client.DefaultRequestHeaders.Add("User-Agent", USER_AGENT);
-            _client.DefaultRequestHeaders.Add("Authorization", $"bearer {_accessToken}");
 
+            _client.DefaultRequestHeaders.Add("User-Agent", _userAgent);
+            _client.DefaultRequestHeaders.Add("Authorization", $"bearer {_accessToken}");
+        }
+
+        private void ValidateConfigValues()
+        {
+
+            // Check for null or empty values
+            if (string.IsNullOrEmpty(_clientId) || string.IsNullOrEmpty(_redirectUri) || string.IsNullOrEmpty(_userAgent))
+            {
+                throw new InvalidOperationException("Critical configuration values are missing. The application will now close.");
+            }
         }
 
         public async Task<JObject> GetPostsAsync(string subreddit)
@@ -155,7 +180,7 @@ namespace RedditMonitoringApp
 
 
             //Authorize your reddit application
-            var authUrl = $"https://www.reddit.com/api/v1/authorize?client_id={CLIENT_ID}&response_type=token&state={UniqueString}&redirect_uri={REDIRECT_URI}&duration=temporary&scope={SCOPE_STRING}";
+            var authUrl = $"https://www.reddit.com/api/v1/authorize?client_id={_clientId}&response_type=token&state={UniqueString}&redirect_uri={_redirectUri}&duration=temporary&scope={SCOPE_STRING}";
             LaunchUrl(authUrl);
 
             // Get access token
