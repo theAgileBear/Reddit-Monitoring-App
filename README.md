@@ -44,6 +44,7 @@ The Reddit Monitoring App is a .NET-based console application designed to monito
 - No data persisting
   - Could store information in a JSON txt file
   - Could create small SQL database to store posts and relative information
+- Subreddit and Request limits are not in environment file (ran out of time)
  
 ## Packages needed to install to make updates
 - MSTest.TestFramework
