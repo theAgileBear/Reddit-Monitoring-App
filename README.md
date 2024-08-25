@@ -13,7 +13,7 @@ The Reddit Monitoring App is a .NET-based console application designed to monito
 - .NET Core SDK
 - Reddit Account
 - [Reddit Application](https://www.reddit.com/prefs/apps) (Optional)
-      - Set to installed app
+  - Set to installed app
 
 ## Installation
 1. Clone Repository
