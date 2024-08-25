@@ -32,7 +32,8 @@ The Reddit Monitoring App is a .NET-based console application designed to monito
    - Request Limit
 3. Run application
 4. Application will open up default browser requiring user to authorize this application to use your reddit account (Press OK in browser)
-5. Application will show output on Console
+5. Copy redirected Uri into the browser to give application your access token
+6. Application will show output on Console
 
 
 
