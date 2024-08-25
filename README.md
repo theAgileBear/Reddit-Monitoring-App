@@ -19,7 +19,7 @@ The Reddit Monitoring App is a .NET-based console application designed to monito
 4. Run Application
 
 ## How to use this Application
-1. Update config.env file to configurate the reddit API
+1. Update config.env file to configurate the reddit API (Or use my default values for my reddit application)
    - Client ID
    - Redirect URI
    - User Agent
