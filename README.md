@@ -40,4 +40,11 @@ The Reddit Monitoring App is a .NET-based console application designed to monito
 - Bearer token expires after 1 hr, no refresh_token logic implemented
 - No data persisting
   - Could store information in a JSON txt file
-  - Could create small SQL database to store posts and relative information 
+  - Could create small SQL database to store posts and relative information
+ 
+## Packages needed to install to make updates
+- MSTest.TestFramework
+- MSTest.TestAdapter
+- System.Net.Http
+- Newtonsoft.Json
+- Moq
