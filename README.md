@@ -41,11 +41,11 @@ The Reddit Monitoring App is a .NET-based console application designed to monito
 ## Limitations
 - Currently only monitors 1 subreddit at a time
 - No retry mechanism for server related failures
-- Bearer token expires after 1 hr, no refresh_token logic implemented
+- Temporary bearer token expires after 1 hour, no refresh token logic implemented
 - No data persisting
   - Could store information in a JSON txt file
   - Could create small SQL database to store posts and relative information
-- Subreddit and Request limits are not in environment file (ran out of time)
+- Subreddit and request limits are not in environment file
  
 ## Packages needed to install to make updates
 - MSTest.TestFramework
