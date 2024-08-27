@@ -56,7 +56,7 @@ namespace RedditMonitoringApp
                     {
                         //create bufferedInterval and convert it to milliseconds
                         int bufferedInterval = (rateLimitReset / rateLimitRemaining + 1) * 1000;
-                        Console.WriteLine($"Buffered interval for next request: {bufferedInterval / 1000} seconds");
+                        Console.WriteLine($"Buffered interval for next request: {bufferedInterval / 1000} seconds\n\n\n\n");
                         await Task.Delay(bufferedInterval, cancellationToken);
                     }
                 }

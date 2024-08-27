@@ -137,7 +137,7 @@ namespace RedditMonitoringApp
         private void ShowRequestDataFromHeader(HttpResponseMessage response)
         {
 
-            Console.WriteLine($"\n\n\nRequest Limit: {_requestLimit}");
+            Console.WriteLine($"Request Limit: {_requestLimit}");
             // Extract rate limit headers
             if (response.Headers.Contains("X-Ratelimit-Used"))
             {
@@ -191,7 +191,7 @@ namespace RedditMonitoringApp
 
             if (!string.IsNullOrEmpty(accessToken))
             {
-                Console.WriteLine("Access Token retreived successfully");
+                Console.WriteLine("Access Token retreived successfully. \n\n Reddit Monitoring will begin shortly....");
                 // Use the access token to make API requests
                 return accessToken;
             }
