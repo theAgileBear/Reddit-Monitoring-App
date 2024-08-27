@@ -114,7 +114,7 @@ namespace RedditMonitoringApp.UnitTests
             "Client error: 400. Check the request parameters.")]
         public async Task GetPostsAsync_On400ClientError_ReturnsHttpRequestException()
         {
-            // Arrange: Simulate a client error response
+            // Arrange
             var fakeResponse = new HttpResponseMessage(System.Net.HttpStatusCode.BadRequest)
             {
                 Content = new StringContent("Client error occurred")
@@ -143,7 +143,7 @@ namespace RedditMonitoringApp.UnitTests
             "Server error: 500. Check the request parameters.")]
         public async Task GetPostsAsync_On500ServerError_ReturnsHttpRequestException()
         {
-            // Arrange: Simulate a client error response
+            // Arrange
             var fakeResponse = new HttpResponseMessage(System.Net.HttpStatusCode.InternalServerError)
             {
                 Content = new StringContent("Client error occurred")
