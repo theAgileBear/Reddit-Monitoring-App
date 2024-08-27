@@ -1,13 +1,14 @@
 # Reddit-Monitoring-App
 
 ## Overview
-The Reddit Monitoring App is a .NET-based console application designed to monitor a specific subreddit for new posts. It leverages the Reddit API to fetch posts and track statistics such as the top posts based on upvotes and the most active users based on post frequency. The application is built with a focus on clean architecture principles, including SOLID principles, to ensure maintainability, testability, and scalability.
+The Reddit Monitoring App is a .NET-based console application designed to monitor a specific subreddit for new posts. It leverages the Reddit API to fetch posts and track statistics such as the top posts based on upvotes and the most active users based on post frequency.
 
 ## Features
 - Subreddit Monitoring: Continuously monitors a specified subreddit for new posts.
 - Statistics Tracking: Tracks and displays the top posts by upvotes and the most active users by post count.
 - Rate Limit Handling: Manages Reddit API rate limits by adjusting request intervals dynamically.
 - Error Handling: Handles various HTTP response codes and network-related exceptions gracefully.
+- Cancellation token used to cancel monitoring services without ending application
 
 ## Prerequisities
 - .NET Core SDK
@@ -40,13 +41,13 @@ The Reddit Monitoring App is a .NET-based console application designed to monito
 ## Limitations
 - Currently only monitors 1 subreddit at a time
 - No retry mechanism for server related failures
-- Bearer token expires after 1 hr, no refresh_token logic implemented
+- Temporary bearer token expires after 1 hour, no refresh token logic implemented
 - No data persisting
   - Could store information in a JSON txt file
   - Could create small SQL database to store posts and relative information
-- Subreddit and Request limits are not in environment file (ran out of time)
+- Subreddit and request limits are not in environment file
  
-## Packages needed to install to make updates
+## Packages used
 - MSTest.TestFramework
 - MSTest.TestAdapter
 - System.Net.Http
