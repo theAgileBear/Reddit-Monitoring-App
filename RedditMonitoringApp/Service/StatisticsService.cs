@@ -5,22 +5,13 @@ using JObject = Newtonsoft.Json.Linq.JObject;
 
 namespace RedditMonitoringApp
 {
-    /// <summary>
-    /// Provides functionality to track and display statistical information about from Reddit
-    /// </summary>
-    class StatisticsService
+    class StatisticsService : IStatisticsService
     {
-        private Dictionary<string, Post> _processedPosts = new Dictionary<string, Post>(); // Maps Post ID to Post object
-        private Dictionary<string, int> _topPosts = new Dictionary<string, int>();            // Maps Post Title to Upvotes
-        private Dictionary<string, int> _topAuthors = new Dictionary<string, int>();          // Maps Author to Post Count
+        private Dictionary<string, Post> _processedPosts = new Dictionary<string, Post>();      // Maps Post ID to Post object
+        private Dictionary<string, int> _topPosts = new Dictionary<string, int>();              // Maps Post Title to Upvotes
+        private Dictionary<string, int> _topAuthors = new Dictionary<string, int>();            // Maps Author to Post Count
         private const int SHOW_LIMIT = 10;
 
-        /// <summary>
-        /// Updates the statistics for the top posts and most active authors based on the provided Reddit posts data.
-        /// This method processes the incoming posts, updating internal dictionaries that track the 
-        /// number of upvotes for each post and the number of posts by each author. 
-        /// /// </summary>
-        /// <param name="posts">A JSON object containing Reddit posts data.</param>
         public void UpdateStatistics(JObject posts)
         {
             var postsList = posts["data"]["children"].ToObject<List<JObject>>();
@@ -81,5 +72,7 @@ namespace RedditMonitoringApp
                 Console.WriteLine($"Author: {author.Key}, Posts: {author.Value}");
             }
         }
+
+
     }
 }

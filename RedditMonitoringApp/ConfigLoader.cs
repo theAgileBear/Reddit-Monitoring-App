@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System.IO;
 
-public class ConfigLoader
+public class ConfigLoader : IConfigLoader
 {
     private readonly JObject _config;
 

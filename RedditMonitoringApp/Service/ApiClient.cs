@@ -28,7 +28,7 @@ namespace RedditMonitoringApp
         /// This constructor is useful for dependency injection.
         /// </summary>
         /// <param name="client">An instance of `HttpClient` used for making API requests.</param>
-        public ApiClient(HttpClient client, ConfigLoader config)
+        public ApiClient(HttpClient client, IConfigLoader config)
         {
             _clientId = config.GetConfigValue("ClientId");
             _redirectUri = config.GetConfigValue("RedirectUri");
@@ -137,7 +137,7 @@ namespace RedditMonitoringApp
         private void ShowRequestDataFromHeader(HttpResponseMessage response)
         {
 
-            Console.WriteLine($"Request Limit: {_requestLimit}");
+            Console.WriteLine($"\n\n\nRequest Limit: {_requestLimit}");
             // Extract rate limit headers
             if (response.Headers.Contains("X-Ratelimit-Used"))
             {
@@ -176,6 +176,7 @@ namespace RedditMonitoringApp
 
         private string GetAccessToken()
         {
+
             if (_accessToken != null) return _accessToken;
 
 
