@@ -8,6 +8,7 @@ The Reddit Monitoring App is a .NET-based console application designed to monito
 - Statistics Tracking: Tracks and displays the top posts by upvotes and the most active users by post count.
 - Rate Limit Handling: Manages Reddit API rate limits by adjusting request intervals dynamically.
 - Error Handling: Handles various HTTP response codes and network-related exceptions gracefully.
+- Cancellation token used to cancel monitoring services without ending application
 
 ## Prerequisities
 - .NET Core SDK
