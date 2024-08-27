@@ -1,7 +1,7 @@
 # Reddit-Monitoring-App
 
 ## Overview
-The Reddit Monitoring App is a .NET-based console application designed to monitor a specific subreddit for new posts. It leverages the Reddit API to fetch posts and track statistics such as the top posts based on upvotes and the most active users based on post frequency. The application is built with a focus on clean architecture principles, including SOLID principles, to ensure maintainability, testability, and scalability.
+The Reddit Monitoring App is a .NET-based console application designed to monitor a specific subreddit for new posts. It leverages the Reddit API to fetch posts and track statistics such as the top posts based on upvotes and the most active users based on post frequency.
 
 ## Features
 - Subreddit Monitoring: Continuously monitors a specified subreddit for new posts.
