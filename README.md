@@ -11,7 +11,7 @@ The Reddit Monitoring App is a .NET-based console application designed to monito
 - Cancellation token used to cancel monitoring services without ending application
 
 ## Prerequisities
-- .NET Core SDK
+- .NET 8 SDK
 - Reddit Account
 - [Reddit Application](https://www.reddit.com/prefs/apps) (Optional)
   - Set to installed app
